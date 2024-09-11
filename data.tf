@@ -5,9 +5,9 @@ data "aws_route53_zone" "main" {
 
 data "aws_ami" "main" {
   most_recent = true
-  name_regex  = "DevOps-LabImage-RHEL9"
-  #name_regex = "b58-golden-image"
-  owners     = ["355449129696"]
+  #name_regex  = "DevOps-LabImage-RHEL9"
+  name_regex = "b58-golden-image"
+  owners     = ["011528299590"]
 }
 
 # Steps to make your own ami :
