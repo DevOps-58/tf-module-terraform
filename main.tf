@@ -26,7 +26,7 @@ resource "null_resource" "app" {
   connection { # Enables connection to the remote host
     host     = aws_instance.main.private_ip
     user     = "ec2-user"
-    password = var.pwd
+    password = "ssh_pwd"
     type     = "ssh"
   }
   provisioner "remote-exec" { # This let's the execution to happen on the remote node
