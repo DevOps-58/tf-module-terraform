@@ -3,6 +3,6 @@ variable "name" {}
 variable "env" {}
 variable "port_no" {}
 variable "pwd" {
-    default = "ExpenseApp@1"
+    default = "DevOps321"
 }
 #variable "vault_token" {}
