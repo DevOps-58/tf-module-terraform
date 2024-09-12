@@ -23,13 +23,13 @@ resource "null_resource" "app" {
   triggers = {
     always_run = true
   }
-  connection { # Enables connection to the remote host
+  connection { 
     host     = aws_instance.main.private_ip
     user     = "ec2-user"
     password = "DevOps321"
     type     = "ssh"
   }
-  provisioner "remote-exec" {                     # This let's the execution to happen on the remote node
+  provisioner "remote-exec" {                     
     inline = [
       "pip3.11 install hvac",
       "ansible-pull -U https://github.com/DevOps-58/ansible.git -e COMPONENT=${var.name} -e ENV=${var.env} -e PWD=${var.pwd} expense-pull.yml"
