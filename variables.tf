@@ -2,7 +2,5 @@ variable "instance_type" {}
 variable "name" {}
 variable "env" {}
 variable "port_no" {}
-variable "pwd" {
-    default = "DevOps321"
-}
+variable "PWD" {}
 #variable "vault_token" {}
