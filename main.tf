@@ -29,6 +29,7 @@ resource "null_resource" "app" {
     password = "DevOps321"
     type     = "ssh"
   }
+  
   provisioner "remote-exec" {                     
     inline = [
       "pip3.11 install hvac",
