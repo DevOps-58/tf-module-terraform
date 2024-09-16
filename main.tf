@@ -33,7 +33,7 @@ resource "null_resource" "app" {
   provisioner "remote-exec" {                     
     inline = [
       "pip3.11 install hvac",
-      "sleep 10; ansible-pull -U https://github.com/DevOps-58/ansible.git -e COMPONENT=${var.name} -e ENV=${var.env} -e PWD=ExpenseApp@1 expense-pull.yml"
+      "sleep 100; ansible-pull -U https://github.com/DevOps-58/ansible.git -e COMPONENT=${var.name} -e ENV=${var.env} -e PWD=ExpenseApp@1 expense-pull.yml"
     ]
   }
 }
