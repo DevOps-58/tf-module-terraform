@@ -3,6 +3,7 @@ resource "aws_security_group" "main" {
   description = "Allows app traffic"
 
   ingress {
+    description = "Allows SSH"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
@@ -10,10 +11,19 @@ resource "aws_security_group" "main" {
   }
 
   ingress {
+    description = "Allows APP"
     from_port   = var.port_no
     to_port     = var.port_no
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    description = "Allows Prometheus"
+    from_port   = 9100
+    to_port     = 9100
+    protocol    = "tcp"
+    cidr_blocks = var.prometheus_node
   }
 
   egress {
@@ -24,3 +34,4 @@ resource "aws_security_group" "main" {
     ipv6_cidr_blocks = ["::/0"]
   }
 }
+
