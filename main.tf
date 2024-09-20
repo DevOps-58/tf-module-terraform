@@ -5,6 +5,7 @@ resource "aws_instance" "main" {
 
   tags = {
     Name = "${var.name}-${var.env}"
+    Monitor = "yes"
   }
 }
 
