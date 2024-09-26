@@ -35,3 +35,13 @@ resource "aws_security_group" "main" {
   }
 }
 
+# This rule is only specific to frontend 
+resource "aws_security_group_rule" "nginx_exporters" {
+  count             = var.name == "frontend" ? 1 : 0
+  type              = "ingress"
+  from_port         = 9113
+  to_port           = 9113
+  protocol          = "tcp"
+  cidr_blocks       = var.prometheus_node
+  security_group_id = aws_security_group.main.id
+}
