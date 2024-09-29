@@ -45,14 +45,3 @@ resource "aws_security_group_rule" "nginx_exporters" {
   cidr_blocks       = var.prometheus_node
   security_group_id = aws_security_group.main.id
 }
-
-# This rule is only specific to frontend 
-resource "aws_security_group_rule" "grok_exporters" {
-  count             = var.name == "frontend" ? 1 : 0
-  type              = "ingress"
-  from_port         = 9144
-  to_port           = 9144
-  protocol          = "tcp"
-  cidr_blocks       = var.prometheus_node
-  security_group_id = aws_security_group.main.id
-}
