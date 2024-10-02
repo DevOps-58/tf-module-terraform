@@ -7,6 +7,10 @@ resource "aws_instance" "main" {
     Name = "${var.name}-${var.env}"
     Monitor = "yes"
   }
+
+  lifecycle {
+    ignore_changes = [ami]
+  }
 }
 
 # Creates DNS Record
@@ -16,6 +20,10 @@ resource "aws_route53_record" "main" {
   type    = "A"
   ttl     = 10
   records = [aws_instance.main.private_ip]
+
+  lifecycle {
+    ignore_changes = [zone_id]
+  }
 }
 
 resource "null_resource" "app" {
